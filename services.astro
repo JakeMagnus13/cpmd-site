@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Services from '../components/Services.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+
+const title = 'Services — Integrative GP Consultations | Dr Challis Paterson';
+const description =
+  "Integrative GP consultations on the Gold Coast and Mount Samson. Women's health, nutrition, lifestyle medicine, children's health, preventive care.";
+---
+
+<Layout title={title} description={description}>
+  <section class="svc-hero">
+    <div class="svc-hero-inner">
+      <div class="section-tag center" style="justify-content: center;">How I Can Help</div>
+      <h1>Medicine that treats<br />the <em>whole you</em></h1>
+      <p class="lead">
+        From hormonal health to childhood wellness, every consultation is rooted in listening,
+        understanding, and treating the root cause.
+      </p>
+    </div>
+  </section>
+
+  <Services />
+  <FAQ />
+  <CTABand />
+</Layout>
+
+<style>
+  .svc-hero {
+    background: var(--terra);
+    color: var(--white);
+    padding: 10rem 2rem 6rem;
+    text-align: center;
+  }
+
+  .svc-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .svc-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .svc-hero h1 em {
+    color: var(--peach-light);
+    font-style: italic;
+  }
+
+  .svc-hero .lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+  }
+
+  @media (max-width: 900px) {
+    .svc-hero { padding: 8rem 1.5rem 4rem; }
+  }
+</style>

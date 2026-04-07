@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Locations from '../components/Locations.astro';
+import CTABand from '../components/CTABand.astro';
+
+const title = 'Book an Appointment — Dr Challis Paterson | Vera Wellness & The Wellness Emporium';
+const description =
+  'Book an integrative GP appointment with Dr Challis Paterson at Vera Wellness (Mount Samson) or The Wellness Emporium (Burleigh Heads). Online consultations coming soon.';
+---
+
+<Layout title={title} description={description}>
+  <section class="loc-hero">
+    <div class="loc-hero-inner">
+      <div class="section-tag center" style="justify-content: center;">Where to Find Me</div>
+      <h1>Two clinics,<br /><em>one philosophy</em></h1>
+      <p class="lead">
+        I consult from two beautiful spaces in South East Queensland. Choose the location that
+        suits you best — the approach is always the same.
+      </p>
+    </div>
+  </section>
+
+  <Locations />
+
+  <section class="how-it-works">
+    <div class="how-inner">
+      <div class="section-tag center" style="justify-content: center;">What to Expect</div>
+      <h2>Your first visit</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>Book online</h3>
+          <p>Choose your preferred clinic and select a time that works for you through each clinic's booking system.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">02</div>
+          <h3>Intake & history</h3>
+          <p>We'll spend time understanding your full health picture — symptoms, lifestyle, history, and goals. No rushing.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
+          <h3>Root-cause plan</h3>
+          <p>Together we'll build a personalised plan addressing the underlying drivers of your health concerns — not just the symptoms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+</Layout>
+
+<style>
+  .loc-hero {
+    background: var(--terra);
+    color: var(--white);
+    padding: 10rem 2rem 6rem;
+    text-align: center;
+  }
+
+  .loc-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .loc-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .loc-hero h1 em {
+    color: var(--peach-light);
+    font-style: italic;
+  }
+
+  .loc-hero .lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+  }
+
+  .how-it-works {
+    padding: 6rem 2rem;
+    background: var(--sand);
+  }
+
+  .how-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .how-inner h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    margin: 1rem 0 3rem;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: left;
+  }
+
+  .step {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 22px;
+  }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--terra);
+    margin-bottom: 1rem;
+  }
+
+  .step h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.8rem;
+  }
+
+  .step p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+
+  @media (max-width: 900px) {
+    .loc-hero { padding: 8rem 1.5rem 4rem; }
+    .how-it-works { padding: 4rem 1.5rem; }
+    .steps { grid-template-columns: 1fr; gap: 1.5rem; max-width: 500px; margin: 0 auto; }
+  }
+</style>

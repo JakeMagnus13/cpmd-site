@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Contact Dr Challis Paterson — Integrative GP Gold Coast & Mount Samson';
+const description =
+  'Get in touch with Dr Challis Paterson. For appointments, please book directly with your preferred clinic. For other enquiries, use the contact form.';
+---
+
+<Layout title={title} description={description}>
+  <section class="contact-hero">
+    <div class="contact-hero-inner">
+      <div class="section-tag center" style="justify-content: center;">Get in Touch</div>
+      <h1>Let's <em>connect</em></h1>
+      <p class="lead">
+        For appointments, please book directly with the clinic you'd like to visit. For any other
+        enquiries, drop me a line below.
+      </p>
+    </div>
+  </section>
+
+  <section class="contact-body">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h2>Quick Info</h2>
+
+        <div class="info-block">
+          <h3>For Appointments</h3>
+          <p>
+            Please book directly with the clinic you'd like to visit. This ensures the fastest
+            confirmation and handles all Medicare rebate processing.
+          </p>
+          <a href="/locations" class="info-link">View booking locations →</a>
+        </div>
+
+        <div class="info-block">
+          <h3>General Enquiries</h3>
+          <p>
+            <a href="mailto:hello@cpmd.health">hello@cpmd.health</a>
+          </p>
+        </div>
+
+        <div class="info-block">
+          <h3>Clinic Phones</h3>
+          <p>Vera Wellness (Mount Samson)<br /><strong>07 2000 1099</strong></p>
+          <p style="margin-top: 0.8rem;">The Wellness Emporium (Burleigh)<br /><strong>07 5535 2474</strong></p>
+        </div>
+
+        <div class="info-block">
+          <h3>Emergencies</h3>
+          <p>
+            If you are experiencing a medical emergency, please call <strong>000</strong>
+            immediately or visit your nearest emergency department. For urgent mental health
+            support, call <strong>Lifeline on 13 11 14</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap reveal">
+        <form id="contactForm" class="contact-form">
+          <h2>Send a message</h2>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Send Message →</button>
+          <p class="form-note">
+            This form is for general enquiries only — not for medical advice or urgent concerns.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-hero {
+    background: var(--terra);
+    color: var(--white);
+    padding: 10rem 2rem 6rem;
+    text-align: center;
+  }
+
+  .contact-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .contact-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .contact-hero h1 em {
+    color: var(--peach-light);
+    font-style: italic;
+  }
+
+  .contact-hero .lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+  }
+
+  .contact-body {
+    padding: 6rem 2rem;
+    background: var(--cream);
+  }
+
+  .contact-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+  }
+
+  .contact-info h2,
+  .contact-form h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+  }
+
+  .info-block {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .info-block:last-child {
+    border-bottom: none;
+  }
+
+  .info-block h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.6rem;
+  }
+
+  .info-block p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+
+  .info-block a {
+    color: var(--terra);
+    text-decoration: none;
+  }
+
+  .info-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: var(--terra);
+    transition: gap 0.3s;
+  }
+
+  .contact-form-wrap {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 22px;
+  }
+
+  .field {
+    margin-bottom: 1.2rem;
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: 0.85rem 1.1rem;
+    border: 1.5px solid var(--sand);
+    border-radius: 12px;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: var(--text);
+    background: var(--cream);
+    transition: border 0.3s;
+  }
+
+  .field textarea {
+    resize: vertical;
+    min-height: 140px;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--terra);
+  }
+
+  .form-note {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    font-weight: 300;
+    margin-top: 1rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .contact-hero { padding: 8rem 1.5rem 4rem; }
+    .contact-body { padding: 4rem 1.5rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .contact-form-wrap { padding: 2rem 1.5rem; }
+  }
+</style>
+
+<script>
+  // Contact form — posts to /api/contact
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const fd = new FormData(form);
+    const payload = Object.fromEntries(fd.entries());
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('Send failed');
+      form.innerHTML =
+        '<h2>Thank you.</h2><p style="font-size: 1rem; color: var(--text-light); line-height: 1.7;">Your message has been sent. I\'ll be in touch as soon as possible.</p>';
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Send Message →';
+      alert('Sorry, something went wrong. Please try emailing hello@cpmd.health directly.');
+    }
+  });
+</script>

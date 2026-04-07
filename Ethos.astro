@@ -1,0 +1,254 @@
+---
+// Ethos section — arch visual + philosophy text
+---
+
+<section class="ethos" id="about">
+  <div class="ethos-visual reveal">
+    <div class="ethos-arch">
+      <div class="pillar-ring">
+        <span class="pillar-word">Sunlight</span>
+        <span class="pillar-word">Movement</span>
+        <span class="pillar-word">Nutrition</span>
+        <span class="pillar-word">Rest</span>
+        <span class="pillar-word">Hydration</span>
+        <span class="pillar-word">Play</span>
+      </div>
+      <div class="ethos-arch-inner">
+        <div class="ethos-arch-title">My Ethos</div>
+        <div class="ethos-arch-quote">
+          "Health is wealth, and healing is always available to us when we return to the innate
+          intelligence of the body."
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ethos-content reveal">
+    <div class="section-tag">About Challis</div>
+    <h2>A fresh perspective<br />on <em>General Practice</em></h2>
+    <p>
+      Dr Challis Paterson combines <strong>conventional medical expertise</strong> with an
+      integrative understanding of health — recognising that optimal wellbeing encompasses an entire
+      way of life, not a quick fix.
+    </p>
+    <p>
+      With a background spanning the <strong>Mater Hospital</strong>, <strong>Queensland
+      Children's Hospital</strong>, and paediatric surgery, Challis brings deep clinical experience
+      to her integrative practice. Her philosophy centres on addressing <strong>root causes</strong>
+      rather than simply managing symptoms.
+    </p>
+    <p>
+      Having navigated her own health challenges, Challis understands that <strong>knowledge is
+      freeing</strong> — patient education is a cornerstone of every consultation.
+    </p>
+    <div class="pillars-inline">
+      <span class="pill">Circadian Biology</span>
+      <span class="pill alt">Nervous System Regulation</span>
+      <span class="pill">Nutrition & Lifestyle</span>
+      <span class="pill alt">Women's Health</span>
+      <span class="pill">Children's Health</span>
+    </div>
+    <div class="credentials-row">
+      <span class="cred"><span class="cred-dot"></span>FRACGP (2025)</span>
+      <span class="cred"><span class="cred-dot"></span>Doctor of Medicine, UQ</span>
+      <span class="cred"><span class="cred-dot"></span>BExNutrSci, UQ</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ethos {
+    padding: 7rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 5rem;
+    align-items: center;
+    position: relative;
+  }
+
+  .ethos::before {
+    content: '';
+    position: absolute;
+    right: -10%;
+    top: 10%;
+    width: 35vw;
+    height: 35vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--peach-light) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .ethos-visual {
+    position: relative;
+    z-index: 1;
+  }
+
+  .ethos-arch {
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 24px;
+    background: var(--terra);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 3rem;
+  }
+
+  .ethos-arch-inner {
+    text-align: center;
+    color: var(--white);
+    z-index: 1;
+  }
+
+  .ethos-arch-title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .ethos-arch-quote {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 380px;
+    margin: 0 auto;
+    font-family: var(--font-display);
+    font-style: italic;
+  }
+
+  .pillar-ring {
+    position: absolute;
+    inset: 0;
+    animation: spinSlow 40s linear infinite;
+  }
+
+  .pillar-word {
+    position: absolute;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.3);
+    white-space: nowrap;
+  }
+
+  .pillar-word:nth-child(1) {
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%) rotate(-15deg);
+  }
+  .pillar-word:nth-child(2) {
+    top: 25%;
+    right: 5%;
+    transform: rotate(20deg);
+  }
+  .pillar-word:nth-child(3) {
+    bottom: 30%;
+    right: 3%;
+    transform: rotate(55deg);
+  }
+  .pillar-word:nth-child(4) {
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .pillar-word:nth-child(5) {
+    bottom: 25%;
+    left: 3%;
+    transform: rotate(-50deg);
+  }
+  .pillar-word:nth-child(6) {
+    top: 25%;
+    left: 3%;
+    transform: rotate(-25deg);
+  }
+
+  .ethos-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .ethos-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+  }
+
+  .ethos-content h2 em {
+    color: var(--terra);
+    font-style: italic;
+  }
+
+  .ethos-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .ethos-content p strong {
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .pillars-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .pill {
+    background: var(--sage-pale);
+    color: var(--sage-deep);
+    padding: 0.45rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .pill.alt {
+    background: var(--terra-pale);
+    color: var(--terra-deep);
+  }
+
+  .credentials-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .cred {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .cred-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--terra-light);
+  }
+
+  @media (max-width: 900px) {
+    .ethos {
+      grid-template-columns: 1fr;
+      padding: 4rem 2rem;
+      gap: 3rem;
+    }
+  }
+</style>

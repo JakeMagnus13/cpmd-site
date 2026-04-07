@@ -1,0 +1,167 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import CTABand from '../../components/CTABand.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// BlogPosting schema for SEO
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Dr Challis Paterson',
+    url: 'https://www.cpmd.health/about',
+  },
+};
+---
+
+<Layout title={`${post.data.title} | Dr Challis Paterson`} description={post.data.description}>
+  <article class="post">
+    <header class="post-header">
+      <div class="post-header-inner">
+        {post.data.category && <div class="post-cat">{post.data.category}</div>}
+        <h1>{post.data.title}</h1>
+        <div class="post-meta">
+          Published {post.data.pubDate.toLocaleDateString('en-AU', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          })} · by Dr Challis Paterson
+        </div>
+      </div>
+    </header>
+
+    <div class="post-content">
+      <div class="post-content-inner">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <CTABand />
+</Layout>
+
+<script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
+
+<style>
+  .post-header {
+    background: var(--terra);
+    color: var(--white);
+    padding: 10rem 2rem 5rem;
+    text-align: center;
+  }
+
+  .post-header-inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .post-cat {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--peach-light);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .post-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-meta {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+  }
+
+  .post-content {
+    padding: 5rem 2rem;
+    background: var(--cream);
+  }
+
+  .post-content-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .post-content-inner :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin: 2.5rem 0 1rem;
+  }
+
+  .post-content-inner :global(h3) {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin: 2rem 0 0.8rem;
+  }
+
+  .post-content-inner :global(p) {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--text);
+    font-weight: 400;
+    margin-bottom: 1.4rem;
+  }
+
+  .post-content-inner :global(a) {
+    color: var(--terra);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .post-content-inner :global(blockquote) {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.2rem;
+    border-left: 3px solid var(--terra);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    margin: 2rem 0;
+    color: var(--text-light);
+  }
+
+  .post-content-inner :global(ul),
+  .post-content-inner :global(ol) {
+    margin: 1rem 0 1.5rem 1.5rem;
+    line-height: 1.85;
+    color: var(--text);
+  }
+
+  .post-content-inner :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .post-content-inner :global(strong) {
+    color: var(--charcoal);
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .post-header { padding: 8rem 1.5rem 3rem; }
+    .post-content { padding: 3rem 1.5rem; }
+  }
+</style>

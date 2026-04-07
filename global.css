@@ -1,0 +1,183 @@
+/* ============================================
+   CPMD.health — Global Styles & Design Tokens
+   ============================================ */
+
+:root {
+  /* Colour palette */
+  --terra: #C28068;
+  --terra-deep: #A66B55;
+  --terra-light: #D4A08E;
+  --terra-pale: #F5E0D6;
+  --peach: #F2D4C2;
+  --peach-light: #FBF0E8;
+  --sage: #7E9A6D;
+  --sage-deep: #5C7A4A;
+  --sage-light: #B8CEAA;
+  --sage-pale: #E8F0E2;
+  --cream: #FFFBF5;
+  --sand: #F5EDE4;
+  --warm-white: #FFF9F3;
+  --charcoal: #2D2A26;
+  --text: #3D3832;
+  --text-light: #7A7168;
+  --white: #FFFFFF;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ===== Reusable utility classes ===== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terra);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-tag::before {
+  content: '';
+  width: 20px;
+  height: 1.5px;
+  background: var(--terra);
+}
+
+.section-tag.center {
+  justify-content: center;
+}
+
+/* ===== Buttons ===== */
+
+.btn-primary {
+  background: var(--terra);
+  color: var(--white);
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  background: var(--terra-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(196, 122, 90, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.92rem;
+  border: 1.5px solid var(--sage-light);
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--sage);
+  background: var(--sage-pale);
+}
+
+/* ===== Scroll reveal animation ===== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Animations ===== */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(15px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scrollMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

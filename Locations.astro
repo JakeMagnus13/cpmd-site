@@ -1,0 +1,194 @@
+---
+const locations = [
+  {
+    icon: '🌿',
+    name: 'Vera Wellness',
+    sub: 'Mount Samson, QLD',
+    desc: 'Nestled in the lush Samford Valley — a sanctuary for whole-person health. 132 Foggs Road, Mount Samson QLD 4520',
+    link: 'https://www.verawellness.com.au/',
+    label: 'Book at Vera →',
+    external: true,
+  },
+  {
+    icon: '🌊',
+    name: 'The Wellness Emporium',
+    sub: 'Burleigh Heads, QLD',
+    desc: 'An integrated wellness clinic in the heart of Burleigh. 2/19 James Street, Burleigh Heads QLD 4220',
+    link: 'https://thewellnessemporium.com.au/',
+    label: 'Book at Burleigh →',
+    external: true,
+  },
+  {
+    icon: '💻',
+    name: 'Online Consultations',
+    sub: 'Australia-wide',
+    desc: 'Telehealth consultations for follow-ups and lifestyle medicine — from wherever you are in Australia.',
+    link: '/contact',
+    label: 'Join the waitlist →',
+    external: false,
+  },
+];
+---
+
+<section class="locations" id="locations">
+  <div class="loc-head reveal">
+    <div class="section-tag center">Where to Find Me</div>
+    <h2>Two clinics, <em>one philosophy</em></h2>
+    <p>I consult from two beautiful spaces in South East Queensland, with online consultations coming soon.</p>
+  </div>
+  <div class="loc-grid">
+    {
+      locations.map((loc) => (
+        <div class="loc-card reveal">
+          <div class="loc-img">
+            <span class="loc-img-icon">{loc.icon}</span>
+            <span class="loc-img-label">clinic photo here</span>
+          </div>
+          <div class="loc-body">
+            <h3>{loc.name}</h3>
+            <div class="loc-sub">{loc.sub}</div>
+            <p>{loc.desc}</p>
+            <a
+              href={loc.link}
+              class="loc-link"
+              target={loc.external ? '_blank' : undefined}
+              rel={loc.external ? 'noopener' : undefined}
+            >
+              {loc.label}
+            </a>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .locations {
+    padding: 6rem 5rem;
+    background: var(--cream);
+  }
+
+  .loc-head {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 4rem;
+  }
+
+  .loc-head h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.8rem;
+  }
+
+  .loc-head h2 em {
+    color: var(--terra);
+    font-style: italic;
+  }
+
+  .loc-head p {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .loc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  .loc-card {
+    background: var(--white);
+    border-radius: 22px;
+    overflow: hidden;
+    transition: all 0.4s;
+  }
+
+  .loc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.06);
+  }
+
+  .loc-img {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .loc-card:nth-child(1) .loc-img {
+    background: linear-gradient(135deg, var(--sage-light), var(--sage-pale));
+  }
+  .loc-card:nth-child(2) .loc-img {
+    background: linear-gradient(135deg, var(--peach), var(--terra-pale));
+  }
+  .loc-card:nth-child(3) .loc-img {
+    background: linear-gradient(135deg, #B8CCDA, #E3EFF5);
+  }
+
+  .loc-img-label {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .loc-img-icon {
+    font-size: 2rem;
+  }
+
+  .loc-body {
+    padding: 1.8rem;
+  }
+
+  .loc-body h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.3rem;
+  }
+
+  .loc-sub {
+    font-size: 0.82rem;
+    color: var(--terra);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+
+  .loc-body p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .loc-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--terra);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: gap 0.3s;
+  }
+
+  .loc-link:hover {
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 900px) {
+    .locations { padding: 4rem 2rem; }
+    .loc-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  }
+</style>

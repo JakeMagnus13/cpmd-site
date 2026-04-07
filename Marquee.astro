@@ -1,0 +1,60 @@
+---
+// Marquee banner — scrolling health pillars
+const pillars = [
+  'Nutrition',
+  'Sunlight',
+  'Movement',
+  'Rest',
+  'Play',
+  'Hydration',
+  'Connection',
+  'Natural Cycles',
+];
+// Triple the list for seamless scrolling
+const items = [...pillars, ...pillars, ...pillars];
+---
+
+<div class="marquee">
+  <div class="marquee-track">
+    {
+      items.map((word) => (
+        <>
+          <span class="marquee-word">{word}</span>
+          <span class="marquee-sep">●</span>
+        </>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .marquee {
+    padding: 1.2rem 0;
+    background: var(--sage-deep);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: scrollMarquee 25s linear infinite;
+  }
+
+  .marquee-word {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: nowrap;
+    padding: 0 0.4rem;
+  }
+
+  .marquee-sep {
+    color: var(--peach);
+    padding: 0 1rem;
+    font-size: 0.6rem;
+    display: inline-flex;
+    align-items: center;
+  }
+</style>

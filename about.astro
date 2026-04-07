@@ -1,0 +1,233 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Marquee from '../components/Marquee.astro';
+import CTABand from '../components/CTABand.astro';
+
+const title = 'About Dr Challis Paterson — Integrative GP, FRACGP | Gold Coast';
+const description =
+  'Meet Dr Challis Paterson — FRACGP-qualified integrative GP trained at UQ. Paediatric background, root-cause medicine, whole-person care on the Gold Coast and Mount Samson.';
+---
+
+<Layout title={title} description={description}>
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <div class="section-tag center" style="justify-content: center;">About Challis</div>
+      <h1>A <em>fresh perspective</em> on medicine</h1>
+      <p class="lead">
+        FRACGP-qualified. UQ-trained. Paediatric background. Root-cause philosophy. Meet the doctor
+        behind CPMD.health.
+      </p>
+    </div>
+  </section>
+
+  <section class="about-body">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <div class="about-photo">
+          <span class="placeholder-label">Dr Challis's photo here</span>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <h2>My Story</h2>
+        <p>
+          My journey in health began with a <strong>Bachelor of Exercise and Nutrition Sciences</strong>
+          from the University of Queensland, followed by my <strong>Doctor of Medicine</strong>
+          degree, completed in 2018 also at UQ.
+        </p>
+        <p>
+          Before becoming a GP, my years in the public healthcare system had a particular focus on
+          <strong>paediatrics and paediatric surgery</strong> at the Mater Hospital and Queensland
+          Children's Hospital. This gave me a comprehensive understanding of medicine across every
+          stage of life.
+        </p>
+        <p>
+          In 2025 I became a <strong>Fellow of the Royal Australian College of General Practitioners
+          (FRACGP)</strong>. Today, I combine that conventional medical expertise with an
+          integrative understanding of health — because I believe optimal wellbeing isn't a
+          prescription, it's a way of life.
+        </p>
+
+        <h2>My Philosophy</h2>
+        <p>
+          Drawing on my own experiences with health challenges in my younger years, I understand
+          that <strong>knowledge is freeing</strong>. Patient education is a cornerstone of my
+          practice. Through education, I aim to empower my patients to be proactive and autonomous
+          in their own health journey.
+        </p>
+        <p>
+          My treatment philosophy focuses on addressing <strong>root causes</strong> rather than
+          simply managing symptoms — leading to more real and meaningful outcomes for my patients.
+        </p>
+
+        <h2>Always Learning</h2>
+        <p>
+          I'm a "forever student" — enthusiastic about continually expanding my knowledge and
+          skill-set, particularly in the areas of <strong>circadian biology</strong>, <strong>autonomic
+          nervous system regulation</strong>, and energy medicine. This ongoing commitment to
+          professional development ensures my patients receive the most current, aligned care
+          available.
+        </p>
+        <p>
+          When I'm not consulting, you'll find me on the sunny Gold Coast — walking or swimming in
+          the mornings, reconnecting with the natural rhythms I ask my patients to honour.
+        </p>
+
+        <div class="credentials-box">
+          <h3>Qualifications</h3>
+          <ul>
+            <li>Fellow, Royal Australian College of General Practitioners (FRACGP, 2025)</li>
+            <li>Doctor of Medicine (MD), University of Queensland, 2018</li>
+            <li>Bachelor of Exercise and Nutrition Sciences, University of Queensland</li>
+            <li>Clinical experience: Mater Hospital, Queensland Children's Hospital</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Marquee />
+  <CTABand />
+</Layout>
+
+<style>
+  .about-hero {
+    background: var(--terra);
+    color: var(--white);
+    padding: 10rem 2rem 6rem;
+    text-align: center;
+  }
+
+  .about-hero-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .about-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .about-hero h1 em {
+    color: var(--peach-light);
+    font-style: italic;
+  }
+
+  .about-hero .lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+  }
+
+  .about-body {
+    padding: 6rem 2rem;
+    background: var(--cream);
+  }
+
+  .about-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-image {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 200px 200px 24px 24px;
+    background: linear-gradient(170deg, var(--peach) 0%, var(--terra-light) 50%, var(--sage-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .placeholder-label {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+  }
+
+  .about-text h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin: 2.5rem 0 1rem;
+  }
+
+  .about-text h2:first-child {
+    margin-top: 0;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .about-text strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .credentials-box {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--sage-pale);
+    border-radius: 20px;
+    border-left: 3px solid var(--sage);
+  }
+
+  .credentials-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+
+  .credentials-box ul {
+    list-style: none;
+  }
+
+  .credentials-box li {
+    font-size: 0.9rem;
+    color: var(--text);
+    font-weight: 400;
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+
+  .credentials-box li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+
+  @media (max-width: 900px) {
+    .about-hero { padding: 8rem 1.5rem 4rem; }
+    .about-body { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-image { position: static; max-width: 400px; margin: 0 auto; }
+  }
+</style>

@@ -1,0 +1,170 @@
+---
+const services = [
+  {
+    icon: '🌸',
+    title: "Women's Health",
+    desc: 'Hormonal balance, menstrual cycle support, perimenopause, preconception care, and contraception guidance — with an integrative lens.',
+  },
+  {
+    icon: '🌱',
+    title: 'Nutrition & Lifestyle',
+    desc: 'Root-cause approach to nutrition, circadian alignment, sleep optimisation, stress management, and daily movement guidance.',
+  },
+  {
+    icon: '🧠',
+    title: 'Mental Wellbeing',
+    desc: 'Supporting mental and emotional health through an integrative approach — including nervous system regulation and lifestyle foundations.',
+  },
+  {
+    icon: '👶',
+    title: 'Children & Families',
+    desc: "Paediatric experience from Queensland Children's Hospital. Common childhood conditions, developmental support, and family health.",
+  },
+  {
+    icon: '☀️',
+    title: 'Preventive Health',
+    desc: 'Health assessments, skin checks, chronic disease prevention — building long-term vitality through proactive, personalised care.',
+  },
+  {
+    icon: '🔬',
+    title: 'Integrative Consultations',
+    desc: 'Extended appointments for complex cases. Deep-dive into root causes with nutritional assessment and holistic treatment planning.',
+  },
+];
+---
+
+<section class="services" id="services">
+  <div class="services-head reveal">
+    <div class="section-tag center">How I Can Help</div>
+    <h2>Whole-person care,<br /><em>tailored to you</em></h2>
+    <p>
+      From hormonal health to childhood wellness, every consultation is rooted in listening,
+      understanding, and treating the cause — not just the symptom.
+    </p>
+  </div>
+  <div class="services-grid">
+    {
+      services.map((s) => (
+        <div class="svc-card reveal">
+          <div class="svc-icon">{s.icon}</div>
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: 6rem 5rem;
+    background: var(--sand);
+  }
+
+  .services-head {
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 4rem;
+  }
+
+  .services-head h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.8rem;
+  }
+
+  .services-head h2 em {
+    color: var(--terra);
+    font-style: italic;
+  }
+
+  .services-head p {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  .svc-card {
+    background: var(--white);
+    border-radius: 22px;
+    padding: 2.2rem 1.8rem;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .svc-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    transition: all 0.4s;
+  }
+
+  .svc-card:nth-child(1)::before { background: var(--terra-light); }
+  .svc-card:nth-child(2)::before { background: var(--sage-light); }
+  .svc-card:nth-child(3)::before { background: #D4B8D9; }
+  .svc-card:nth-child(4)::before { background: #B8CCDA; }
+  .svc-card:nth-child(5)::before { background: var(--peach); }
+  .svc-card:nth-child(6)::before { background: var(--sage); }
+
+  .svc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.06);
+  }
+
+  .svc-card:hover::before {
+    height: 4px;
+  }
+
+  .svc-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .svc-card:nth-child(1) .svc-icon { background: var(--terra-pale); }
+  .svc-card:nth-child(2) .svc-icon { background: var(--sage-pale); }
+  .svc-card:nth-child(3) .svc-icon { background: #F3E8F5; }
+  .svc-card:nth-child(4) .svc-icon { background: #E3EFF5; }
+  .svc-card:nth-child(5) .svc-icon { background: var(--peach-light); }
+  .svc-card:nth-child(6) .svc-icon { background: #E8F0E2; }
+
+  .svc-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.7rem;
+  }
+
+  .svc-card p {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+
+  @media (max-width: 900px) {
+    .services { padding: 4rem 2rem; }
+    .services-grid { grid-template-columns: 1fr; max-width: 500px; }
+  }
+</style>

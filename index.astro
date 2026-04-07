@@ -1,0 +1,181 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const title = 'Health Resources & Blog — Dr Challis Paterson';
+const description =
+  "Integrative health articles from Dr Challis Paterson — covering nutrition, circadian health, women's health, and whole-person medicine.";
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title={title} description={description}>
+  <section class="blog-hero">
+    <div class="blog-hero-inner">
+      <div class="section-tag center" style="justify-content: center;">Reading Room</div>
+      <h1>Notes on <em>whole-person</em> health</h1>
+      <p class="lead">
+        Thoughts on integrative medicine, nutrition, circadian rhythms, and the simple foundations
+        of feeling well.
+      </p>
+    </div>
+  </section>
+
+  <section class="blog-list">
+    {
+      posts.length === 0 ? (
+        <div class="empty">
+          <p>First post coming soon. Check back shortly, or subscribe via the popup to be notified.</p>
+        </div>
+      ) : (
+        <div class="posts-grid">
+          {posts.map((post) => (
+            <a href={`/blog/${post.id}`} class="post-card">
+              <div class="post-card-img">
+                <span class="post-icon">📝</span>
+              </div>
+              <div class="post-card-body">
+                {post.data.category && <div class="post-cat">{post.data.category}</div>}
+                <h2>{post.data.title}</h2>
+                <p>{post.data.description}</p>
+                <div class="post-meta">
+                  {post.data.pubDate.toLocaleDateString('en-AU', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </section>
+</Layout>
+
+<style>
+  .blog-hero {
+    background: var(--terra);
+    color: var(--white);
+    padding: 10rem 2rem 6rem;
+    text-align: center;
+  }
+
+  .blog-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .blog-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .blog-hero h1 em {
+    color: var(--peach-light);
+    font-style: italic;
+  }
+
+  .blog-hero .lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+  }
+
+  .blog-list {
+    padding: 6rem 2rem;
+    background: var(--cream);
+    min-height: 40vh;
+  }
+
+  .empty {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .posts-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .post-card {
+    background: var(--white);
+    border-radius: 22px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s;
+    display: block;
+  }
+
+  .post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.06);
+  }
+
+  .post-card-img {
+    height: 160px;
+    background: linear-gradient(135deg, var(--peach), var(--terra-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+  }
+
+  .post-card-body {
+    padding: 1.8rem;
+  }
+
+  .post-cat {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+  }
+
+  .post-card h2 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.7rem;
+    line-height: 1.3;
+  }
+
+  .post-card p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .post-meta {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    font-weight: 400;
+  }
+
+  @media (max-width: 900px) {
+    .blog-hero { padding: 8rem 1.5rem 4rem; }
+    .blog-list { padding: 4rem 1.5rem; }
+    .posts-grid { grid-template-columns: 1fr; max-width: 500px; }
+  }
+</style>

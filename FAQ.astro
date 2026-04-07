@@ -1,0 +1,149 @@
+---
+const faqs = [
+  {
+    q: "What's the difference between you and a regular GP?",
+    a: "I'm a fully qualified FRACGP general practitioner — I can do everything a standard GP does (scripts, referrals, health assessments, skin checks). The difference is I also look at the bigger picture: nutrition, sleep, circadian rhythms, stress, nervous system regulation, and how your lifestyle connects to your symptoms. I treat root causes, not just what shows up on the surface.",
+  },
+  {
+    q: 'Do you bulk bill?',
+    a: "Fees vary by clinic and appointment type. Medicare rebates apply to standard and extended consultations. Please check the booking page for each clinic for current fee schedules — I'm transparent about costs so there are no surprises.",
+  },
+  {
+    q: 'Can I bring my children?',
+    a: "Absolutely. I have years of experience in paediatrics and paediatric surgery at Queensland Children's Hospital. I see children of all ages for general health, developmental concerns, and common childhood conditions. I also see male patients — everyone is welcome.",
+  },
+  {
+    q: 'Do I need a referral?',
+    a: "No referral is needed to see me as a GP. Simply book an appointment at either clinic. If you'd like to access specific integrative services, we can discuss the best pathway during your first visit.",
+  },
+  {
+    q: 'How long are appointments?',
+    a: 'I offer standard consultations and extended appointments for more complex concerns. For new patients, I recommend booking a longer appointment so we have time to really understand your health picture. Extended appointments are ideal for integrative consults, chronic disease management, and mental health.',
+  },
+  {
+    q: 'Are you a naturopath or a medical doctor?',
+    a: "I'm a medical doctor (FRACGP, Doctor of Medicine from UQ) who also holds a Bachelor of Exercise and Nutrition Sciences. I practice evidence-based medicine with an integrative philosophy — meaning I use the best of conventional medicine alongside nutrition, lifestyle, and holistic approaches. You get the rigour of medical training with a broader lens.",
+  },
+];
+
+// Build FAQPage schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.a,
+    },
+  })),
+};
+---
+
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-head reveal">
+      <h2>Questions? I've got you.</h2>
+      <p>The things people ask most before their first visit.</p>
+    </div>
+    {
+      faqs.map((faq) => (
+        <details class="faq-item">
+          <summary class="faq-q">
+            {faq.q}
+            <span class="faq-q-icon">+</span>
+          </summary>
+          <div class="faq-a">{faq.a}</div>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<style>
+  .faq {
+    padding: 6rem 5rem;
+    background: var(--terra);
+    color: var(--white);
+  }
+
+  .faq-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-head {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .faq-head h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+  }
+
+  .faq-head p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+  }
+
+  .faq-item {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 1.5rem 0;
+  }
+
+  .faq-item:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .faq-q {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s;
+    list-style: none;
+  }
+
+  .faq-q::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-q:hover {
+    color: var(--peach);
+  }
+
+  .faq-q-icon {
+    font-size: 1.4rem;
+    font-weight: 300;
+    transition: transform 0.3s;
+    font-family: var(--font-body);
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  .faq-item[open] .faq-q-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    padding-top: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 300;
+  }
+
+  @media (max-width: 900px) {
+    .faq { padding: 4rem 2rem; }
+  }
+</style>

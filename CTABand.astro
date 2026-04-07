@@ -1,0 +1,68 @@
+---
+// CTA band at bottom of homepage
+---
+
+<section class="cta-band" id="book">
+  <h2>Ready to feel like <em>yourself</em> again?</h2>
+  <p>
+    Book a consultation and experience medicine that actually listens — at Vera Wellness or The
+    Wellness Emporium.
+  </p>
+  <a href="/locations" class="btn-cta">Find a Time That Works →</a>
+</section>
+
+<style>
+  .cta-band {
+    padding: 5rem;
+    background: var(--charcoal);
+    text-align: center;
+  }
+
+  .cta-band h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .cta-band h2 em {
+    color: var(--peach);
+    font-style: italic;
+  }
+
+  .cta-band p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .btn-cta {
+    background: var(--terra);
+    color: var(--white);
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-cta:hover {
+    background: var(--terra-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 900px) {
+    .cta-band { padding: 4rem 2rem; }
+  }
+</style>

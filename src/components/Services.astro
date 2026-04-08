@@ -35,15 +35,17 @@ const services = [
 
 <section class="services" id="services">
   <div class="services-head reveal">
+    <div class="services-head-text">
+      <div class="section-tag">How I Can Help</div>
+      <h2>Whole-person care,<br /><em>tailored to you</em></h2>
+      <p>
+        From hormonal health to childhood wellness, every consultation is rooted in listening,
+        understanding, and treating the cause — not just the symptom.
+      </p>
+    </div>
     <div class="svc-portrait">
       <img src="/images/Headshot2.jpeg" alt="Dr Challis Paterson" />
     </div>
-    <div class="section-tag center">How I Can Help</div>
-    <h2>Whole-person care,<br /><em>tailored to you</em></h2>
-    <p>
-      From hormonal health to childhood wellness, every consultation is rooted in listening,
-      understanding, and treating the cause — not just the symptom.
-    </p>
   </div>
   <div class="services-grid">
     {
@@ -65,19 +67,26 @@ const services = [
   }
 
   .services-head {
-    text-align: center;
-    max-width: 580px;
+    max-width: 1060px;
     margin: 0 auto 4rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .services-head-text {
+    /* text lives here */
   }
 
   .svc-portrait {
-    width: 110px;
-    height: 110px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     overflow: hidden;
-    margin: 0 auto 1.8rem;
+    flex-shrink: 0;
     border: 3px solid var(--terra-light);
-    box-shadow: 0 4px 20px rgba(194, 128, 104, 0.2);
+    box-shadow: 0 8px 40px rgba(194, 128, 104, 0.2);
   }
 
   .svc-portrait img {
@@ -186,6 +195,16 @@ const services = [
 
   @media (max-width: 900px) {
     .services { padding: 4rem 2rem; }
+    .services-head {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+    .svc-portrait {
+      margin: 0 auto;
+      width: 160px;
+      height: 160px;
+    }
     .services-grid { grid-template-columns: 1fr; max-width: 500px; }
   }
 </style>

@@ -516,11 +516,14 @@
     rememberDismissal();
   }
 
-  // Show popup 2s after page fully loads, once per 7 days
+  // Show popup 2s after load, once per 7 days
+  // Guard against load event already having fired (Astro defers scripts)
   if (!hasBeenDismissed()) {
-    window.addEventListener('load', () => {
+    if (document.readyState === 'complete') {
       setTimeout(openPopup, 2000);
-    }, { once: true });
+    } else {
+      window.addEventListener('load', () => setTimeout(openPopup, 2000), { once: true });
+    }
   }
 
   closeBtn?.addEventListener('click', closePopup);

@@ -70,18 +70,20 @@
     background: rgba(45, 42, 38, 0.55);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     padding: 2rem;
     opacity: 0;
-    pointer-events: none;
     transition: opacity 0.5s ease;
+  }
+
+  .popup-overlay.visible {
+    display: flex;
   }
 
   .popup-overlay.active {
     opacity: 1;
-    pointer-events: auto;
   }
 
   .popup {
@@ -493,12 +495,23 @@
   }
 
   function openPopup(): void {
-    overlay?.classList.add('active');
+    if (!overlay) return;
+    overlay.classList.add('visible');
+    // Two rAF frames ensure the browser paints display:flex before
+    // the opacity transition begins — required on iOS Safari
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        overlay.classList.add('active');
+      });
+    });
     document.body.style.overflow = 'hidden';
   }
 
   function closePopup(): void {
-    overlay?.classList.remove('active');
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    // Remove display after fade-out completes
+    setTimeout(() => overlay.classList.remove('visible'), 500);
     document.body.style.overflow = '';
     rememberDismissal();
   }

@@ -14,23 +14,25 @@
       <a href="/locations" class="btn-hero-primary">Book an Appointment →</a>
       <a href="/about" class="btn-hero-secondary">Learn More</a>
     </div>
-  </div>
-  <div class="hero-image">
-    <div class="hero-photo-frame">
-      <div class="hero-photo">
-        <img src="/images/IMG_3588.png" alt="Dr Challis Paterson" />
-      </div>
+    <div class="hero-badges">
       <div class="hero-badge">
         <div class="badge-dot">🎓</div>
         <div class="badge-label">
           FRACGP Qualified<span>Fellow, Royal Australian College of GPs</span>
         </div>
       </div>
-      <div class="hero-badge-right">
+      <div class="hero-badge">
         <div class="badge-dot">🌿</div>
         <div class="badge-label">
-          Root-Cause Medicine<span>Treating causes, not just symptoms</span>
+          Integrative Health<span>Whole-person medicine</span>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-photo-frame">
+      <div class="hero-photo">
+        <img src="/images/IMG_3588.png" alt="Dr Challis Paterson" />
       </div>
     </div>
   </div>
@@ -194,57 +196,49 @@
     display: block;
   }
 
-  .hero-badge {
-    position: absolute;
-    bottom: 2.5rem;
-    left: -1.5rem;
-    background: var(--white);
-    border-radius: 18px;
-    padding: 0.9rem 1.2rem;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  .hero-badges {
     display: flex;
-    align-items: center;
-    gap: 0.7rem;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
     opacity: 0;
-    animation: floatIn 0.8s ease 1s forwards;
+    animation: fadeUp 0.8s ease 1s forwards;
   }
 
-  .hero-badge-right {
-    position: absolute;
-    top: 2rem;
-    right: -1rem;
-    background: var(--white);
-    border-radius: 18px;
-    padding: 0.9rem 1.2rem;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  .hero-badge {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 14px;
+    padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
-    gap: 0.7rem;
-    opacity: 0;
-    animation: floatIn 0.8s ease 1.2s forwards;
+    gap: 0.6rem;
+    backdrop-filter: blur(8px);
   }
 
   .badge-dot {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background: var(--sage-pale);
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    flex-shrink: 0;
   }
 
   .badge-label {
     font-size: 0.78rem;
     font-weight: 500;
     line-height: 1.3;
+    color: var(--white);
   }
 
   .badge-label span {
     display: block;
     font-weight: 300;
-    color: var(--text-light);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.72rem;
   }
 
@@ -259,10 +253,6 @@
     }
     .hero-image {
       padding: 1rem 2rem 3rem;
-    }
-    .hero-badge,
-    .hero-badge-right {
-      display: none;
     }
   }
 </style>

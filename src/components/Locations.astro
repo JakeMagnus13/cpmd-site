@@ -10,21 +10,12 @@ const locations = [
     external: true,
   },
   {
-    icon: '🌊',
-    name: 'The Wellness Emporium',
-    sub: 'Burleigh Heads, QLD',
-    desc: 'An integrated wellness clinic in the heart of Burleigh. 2/19 James Street, Burleigh Heads QLD 4220',
-    link: 'https://thewellnessemporium.com.au/',
-    label: 'Book at Burleigh →',
-    external: true,
-  },
-  {
     icon: '💻',
     name: 'Online Consultations',
     sub: 'Australia-wide',
     desc: 'Telehealth consultations for follow-ups and lifestyle medicine — from wherever you are in Australia.',
     link: '/contact',
-    label: 'Join the waitlist →',
+    label: 'Book Online →',
     external: false,
   },
 ];
@@ -33,8 +24,8 @@ const locations = [
 <section class="locations" id="locations">
   <div class="loc-head reveal">
     <div class="section-tag center">Where to Find Me</div>
-    <h2>Two clinics, <em>one philosophy</em></h2>
-    <p>I consult from two beautiful spaces in South East Queensland, with online consultations coming soon.</p>
+    <h2>In person or online, <em>one philosophy</em></h2>
+    <p>Based at Vera Wellness in Mount Samson, with online consultations now available Australia-wide.</p>
   </div>
   <div class="loc-grid">
     {
@@ -97,9 +88,9 @@ const locations = [
 
   .loc-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    max-width: 1060px;
+    max-width: 720px;
     margin: 0 auto;
   }
 
@@ -128,9 +119,6 @@ const locations = [
     background: linear-gradient(135deg, var(--sage-light), var(--sage-pale));
   }
   .loc-card:nth-child(2) .loc-img {
-    background: linear-gradient(135deg, var(--peach), var(--terra-pale));
-  }
-  .loc-card:nth-child(3) .loc-img {
     background: linear-gradient(135deg, #B8CCDA, #E3EFF5);
   }
 

@@ -68,20 +68,20 @@
     inset: 0;
     z-index: 1000;
     background: rgba(45, 42, 38, 0.55);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem;
     opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
   }
 
   .popup-overlay.active {
     opacity: 1;
-    visibility: visible;
+    pointer-events: auto;
   }
 
   .popup {
@@ -503,9 +503,11 @@
     rememberDismissal();
   }
 
-  // Show popup 2s after load, once per 7 days
+  // Show popup 2s after page fully loads, once per 7 days
   if (!hasBeenDismissed()) {
-    setTimeout(openPopup, 2000);
+    window.addEventListener('load', () => {
+      setTimeout(openPopup, 2000);
+    }, { once: true });
   }
 
   closeBtn?.addEventListener('click', closePopup);

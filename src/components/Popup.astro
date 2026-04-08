@@ -4,60 +4,35 @@
 ---
 
 <div class="popup-overlay" id="popupOverlay">
-  <div class="popup">
+  <div class="popup" id="popupCard">
     <button class="popup-close" id="popupCloseBtn" aria-label="Close popup">&times;</button>
 
-    <div class="popup-visual">
-      <div class="popup-visual-inner">
+    <!-- Main form view -->
+    <div class="popup-inner" id="popupForm">
+      <div class="popup-info">
         <div class="popup-tag">Important Notice</div>
-        <h3>Dr Challis is currently <em>on leave</em></h3>
-        <p>Join the newsletter to be the first to know when bookings reopen.</p>
-      </div>
-    </div>
-
-    <div class="popup-form" id="popupForm">
-      <div class="popup-notice">
-        <div class="popup-notice-label">Important Notice</div>
-        <div class="popup-notice-text">
-          Dr Challis is on leave from [DATE] to [DATE]. Sign up below to get updates and be
-          the first to know when bookings reopen.
-        </div>
+        <h2>Dr Challis is currently <em>on leave</em></h2>
+        <p>Sign up to be the first to know when bookings reopen.</p>
       </div>
 
-      <h2>Stay <em>connected</em></h2>
-      <p>Pop in your details and I'll keep you updated on my return and share occasional notes on integrative health.</p>
-
-      <ul class="popup-benefits">
-        <li>Updates on when I'm back seeing patients</li>
-        <li>Occasional notes on integrative health — no spam, ever</li>
-      </ul>
-
-      <form id="subscribeForm">
-        <div class="popup-field">
-          <input type="text" name="name" placeholder="Your first name" required />
-        </div>
-        <div class="popup-field">
-          <input type="email" name="email" placeholder="Your email address" required />
-        </div>
-        <div class="popup-error" id="popupError"></div>
+      <form class="popup-fields" id="subscribeForm">
+        <input type="text" name="name" placeholder="First name" required />
+        <input type="email" name="email" placeholder="Email address" required />
         <button type="submit" class="popup-submit" id="popupSubmitBtn">
           Keep Me Updated →
         </button>
+        <div class="popup-error" id="popupError"></div>
       </form>
-      <p class="popup-disclaimer">
-        By signing up you agree to receive emails from Dr Challis Paterson. You can unsubscribe
-        anytime. <a href="/privacy">Privacy Policy</a>
-      </p>
     </div>
 
-    <div class="popup-form popup-success" id="popupSuccess">
+    <!-- Success view -->
+    <div class="popup-success" id="popupSuccess">
       <div class="popup-success-icon">✓</div>
-      <h3>You're <em>in</em>!</h3>
-      <p>
-        You're on the list. I'll keep you updated on my return and share occasional notes on
-        integrative health.
-      </p>
-      <button class="popup-submit" id="popupContinueBtn">Continue Exploring</button>
+      <div class="popup-success-text">
+        <h3>You're <em>in</em>!</h3>
+        <p>I'll be in touch when bookings reopen.</p>
+      </div>
+      <button class="popup-submit popup-continue" id="popupContinueBtn">Close</button>
     </div>
   </div>
 </div>
@@ -67,15 +42,15 @@
     position: fixed;
     inset: 0;
     z-index: 1000;
-    background: rgba(45, 42, 38, 0.55);
+    background: rgba(45, 42, 38, 0.45);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     display: none;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1.5rem;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.4s ease;
   }
 
   .popup-overlay.visible {
@@ -88,18 +63,14 @@
 
   .popup {
     background: var(--cream);
-    border-radius: 28px;
-    max-width: 820px;
+    border-radius: 20px;
+    max-width: 860px;
     width: 100%;
-    max-height: 92vh;
-    overflow-y: auto;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
     position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    transform: scale(0.96) translateY(12px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
-    transform: scale(0.94) translateY(20px);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .popup-overlay.active .popup {
@@ -108,268 +79,125 @@
 
   .popup-close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 36px;
-    height: 36px;
+    top: 0.9rem;
+    right: 0.9rem;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.06);
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
-    font-weight: 300;
+    font-size: 1.1rem;
+    font-weight: 400;
     color: var(--text);
     z-index: 5;
-    transition: all 0.3s;
+    transition: background 0.2s;
     font-family: var(--font-body);
+    line-height: 1;
   }
 
   .popup-close:hover {
-    background: var(--white);
-    transform: rotate(90deg);
+    background: rgba(0, 0, 0, 0.12);
   }
 
-  .popup-visual {
-    background: var(--terra);
-    padding: 3rem 2rem;
-    position: relative;
-    overflow: hidden;
+  /* ── Main row layout ── */
+  .popup-inner {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: var(--white);
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem 2.5rem;
+    padding-right: 3.5rem; /* room for close btn */
   }
 
-  .popup-visual::before {
-    content: '';
-    position: absolute;
-    top: -30%;
-    right: -30%;
-    width: 140%;
-    height: 140%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .popup-visual-inner {
-    position: relative;
-    z-index: 1;
+  .popup-info {
+    flex: 0 0 auto;
+    max-width: 300px;
   }
 
   .popup-tag {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--peach-light);
-    font-weight: 500;
-    margin-bottom: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .popup-tag::before {
-    content: '';
-    width: 20px;
-    height: 1.5px;
-    background: var(--peach-light);
-  }
-
-  .popup-visual h3 {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.9rem;
-    line-height: 1.15;
-    font-weight: 400;
-    margin-bottom: 1rem;
-  }
-
-  .popup-visual p {
-    font-size: 0.88rem;
-    line-height: 1.65;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 300;
-  }
-
-  .popup-guide-preview {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    padding: 1.2rem;
-    margin-top: 1.5rem;
-    position: relative;
-    z-index: 1;
-    backdrop-filter: blur(10px);
-  }
-
-  .popup-guide-preview-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--peach-light);
-    font-weight: 500;
+    color: var(--terra);
+    font-weight: 600;
     margin-bottom: 0.5rem;
   }
 
-  .popup-guide-preview-title {
+  .popup-info h2 {
     font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 500;
-    line-height: 1.3;
-    margin-bottom: 0.4rem;
-  }
-
-  .popup-guide-preview-sub {
-    font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: 300;
-  }
-
-  .popup-guide-preview-icon {
-    position: absolute;
-    top: 1.2rem;
-    right: 1.2rem;
-    font-size: 1.4rem;
-  }
-
-  .popup-form {
-    padding: 3rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .popup-notice {
-    background: var(--sage-pale);
-    border-left: 3px solid var(--sage);
-    padding: 0.9rem 1rem;
-    border-radius: 0 10px 10px 0;
-    margin-bottom: 1.5rem;
-  }
-
-  .popup-notice-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--sage-deep);
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-  }
-
-  .popup-notice-text {
-    font-size: 0.82rem;
-    line-height: 1.5;
-    color: var(--text);
-    font-weight: 400;
-  }
-
-  .popup-form h2 {
-    font-family: var(--font-display);
-    font-size: 1.65rem;
+    font-size: 1.35rem;
     font-weight: 400;
     color: var(--charcoal);
     line-height: 1.2;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.4rem;
   }
 
-  .popup-form h2 em {
+  .popup-info h2 em {
     color: var(--terra);
     font-style: italic;
   }
 
-  .popup-form > p {
-    font-size: 0.9rem;
-    line-height: 1.6;
+  .popup-info p {
+    font-size: 0.83rem;
     color: var(--text-light);
     font-weight: 300;
-    margin-bottom: 1.5rem;
-  }
-
-  .popup-benefits {
-    list-style: none;
-    margin-bottom: 1.5rem;
-  }
-
-  .popup-benefits li {
-    font-size: 0.85rem;
-    color: var(--text);
-    font-weight: 400;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    margin-bottom: 0.6rem;
     line-height: 1.5;
+    margin: 0;
   }
 
-  .popup-benefits li::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--terra);
-    flex-shrink: 0;
-    margin-top: 0.5rem;
+  /* ── Inline form ── */
+  .popup-fields {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
   }
 
-  .popup-field {
-    margin-bottom: 0.9rem;
-  }
-
-  .popup-field input {
-    width: 100%;
-    padding: 0.85rem 1.1rem;
+  .popup-fields input {
+    flex: 1;
+    min-width: 130px;
+    padding: 0.75rem 1rem;
     border: 1.5px solid var(--sand);
-    border-radius: 12px;
+    border-radius: 10px;
     font-family: var(--font-body);
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     color: var(--text);
     background: var(--white);
-    transition: border 0.3s;
+    transition: border 0.2s;
   }
 
-  .popup-field input:focus {
+  .popup-fields input:focus {
     outline: none;
     border-color: var(--terra);
   }
 
-  .popup-field input::placeholder {
+  .popup-fields input::placeholder {
     color: var(--text-light);
     font-weight: 300;
   }
 
-  .popup-error {
-    font-size: 0.8rem;
-    color: #c44747;
-    margin-bottom: 0.5rem;
-    min-height: 1.2em;
-  }
-
   .popup-submit {
-    width: 100%;
-    padding: 0.95rem 1.5rem;
+    white-space: nowrap;
+    padding: 0.75rem 1.4rem;
     background: var(--terra);
     color: var(--white);
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     font-family: var(--font-body);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    transition: all 0.2s;
   }
 
   .popup-submit:hover:not(:disabled) {
     background: var(--terra-deep);
     transform: translateY(-1px);
-    box-shadow: 0 8px 25px rgba(196, 122, 90, 0.3);
+    box-shadow: 0 6px 20px rgba(196, 122, 90, 0.3);
   }
 
   .popup-submit:disabled {
@@ -377,87 +205,104 @@
     cursor: not-allowed;
   }
 
-  .popup-disclaimer {
-    font-size: 0.72rem;
-    color: var(--text-light);
-    font-weight: 300;
-    text-align: center;
-    margin-top: 1rem;
-    line-height: 1.5;
+  .popup-error {
+    flex-basis: 100%;
+    font-size: 0.78rem;
+    color: #c44747;
+    min-height: 1em;
   }
 
-  .popup-disclaimer a {
-    color: var(--terra);
-    text-decoration: none;
-  }
-
+  /* ── Success state ── */
   .popup-success {
     display: none;
-    text-align: center;
-    padding: 1rem 0;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.8rem 2.5rem;
+    padding-right: 3.5rem;
   }
 
   .popup-success.active {
-    display: block;
+    display: flex;
   }
 
   .popup-success-icon {
-    width: 64px;
-    height: 64px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: var(--sage-pale);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.2rem;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     color: var(--sage-deep);
+    flex-shrink: 0;
   }
 
-  .popup-success h3 {
+  .popup-success-text {
+    flex: 1;
+  }
+
+  .popup-success-text h3 {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 400;
     color: var(--charcoal);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.2rem;
   }
 
-  .popup-success h3 em {
+  .popup-success-text h3 em {
     color: var(--terra);
     font-style: italic;
   }
 
-  .popup-success p {
-    font-size: 0.9rem;
+  .popup-success-text p {
+    font-size: 0.85rem;
     color: var(--text-light);
     font-weight: 300;
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
+    margin: 0;
   }
 
-  .popup-form.hidden {
+  .popup-continue {
+    flex-shrink: 0;
+  }
+
+  .popup-inner.hidden {
     display: none;
   }
 
-  @media (max-width: 720px) {
-    .popup {
-      grid-template-columns: 1fr;
-      max-height: 95vh;
+  /* ── Mobile: stack vertically ── */
+  @media (max-width: 640px) {
+    .popup-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.8rem 1.5rem;
+      padding-top: 2.2rem;
     }
-    .popup-visual {
-      padding: 2rem 1.8rem 1.5rem;
+
+    .popup-info {
+      max-width: 100%;
     }
-    .popup-visual h3 {
-      font-size: 1.5rem;
+
+    .popup-fields {
+      width: 100%;
     }
-    .popup-form {
-      padding: 1.8rem 1.8rem 2rem;
+
+    .popup-fields input {
+      min-width: 100%;
     }
-    .popup-form h2 {
-      font-size: 1.4rem;
+
+    .popup-submit {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
     }
-    .popup-guide-preview {
-      padding: 1rem;
+
+    .popup-success {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.8rem 1.5rem;
+      padding-top: 2.2rem;
     }
   }
 </style>
@@ -497,8 +342,6 @@
   function openPopup(): void {
     if (!overlay) return;
     overlay.classList.add('visible');
-    // Two rAF frames ensure the browser paints display:flex before
-    // the opacity transition begins — required on iOS Safari
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         overlay.classList.add('active');
@@ -510,14 +353,12 @@
   function closePopup(): void {
     if (!overlay) return;
     overlay.classList.remove('active');
-    // Remove display after fade-out completes
-    setTimeout(() => overlay.classList.remove('visible'), 500);
+    setTimeout(() => overlay.classList.remove('visible'), 400);
     document.body.style.overflow = '';
     rememberDismissal();
   }
 
   // Show popup 2s after load, once per 7 days
-  // Guard against load event already having fired (Astro defers scripts)
   if (!hasBeenDismissed()) {
     if (document.readyState === 'complete') {
       setTimeout(openPopup, 2000);
@@ -570,7 +411,7 @@
     } catch (err) {
       errorEl.textContent = err instanceof Error ? err.message : 'Something went wrong.';
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Me The Guide →';
+      submitBtn.textContent = 'Keep Me Updated →';
     }
   });
 </script>

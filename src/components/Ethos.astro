@@ -5,19 +5,9 @@
 <section class="ethos" id="about">
   <div class="ethos-visual reveal">
     <div class="ethos-arch">
-      <div class="pillar-ring">
-        <span class="pillar-word">Sunlight</span>
-        <span class="pillar-word">Movement</span>
-        <span class="pillar-word">Nutrition</span>
-        <span class="pillar-word">Rest</span>
-        <span class="pillar-word">Hydration</span>
-        <span class="pillar-word">Play</span>
-      </div>
       <div class="ethos-arch-inner">
-        <div class="ethos-arch-title">My Ethos</div>
         <div class="ethos-arch-quote">
-          "Health is wealth, and healing is always available to us when we return to the innate
-          intelligence of the body."
+          <span class="word-flash">Nutrition</span><br />is healing.
         </div>
       </div>
     </div>
@@ -95,70 +85,19 @@
     z-index: 1;
   }
 
-  .ethos-arch-title {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 2.2rem;
-    font-weight: 400;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-  }
-
   .ethos-arch-quote {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.85);
-    max-width: 380px;
-    margin: 0 auto;
     font-family: var(--font-display);
     font-style: italic;
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--white);
   }
 
-  .pillar-ring {
-    position: absolute;
-    inset: 0;
-    animation: spinSlow 40s linear infinite;
-  }
-
-  .pillar-word {
-    position: absolute;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.3);
-    white-space: nowrap;
-  }
-
-  .pillar-word:nth-child(1) {
-    top: 8%;
-    left: 50%;
-    transform: translateX(-50%) rotate(-15deg);
-  }
-  .pillar-word:nth-child(2) {
-    top: 25%;
-    right: 5%;
-    transform: rotate(20deg);
-  }
-  .pillar-word:nth-child(3) {
-    bottom: 30%;
-    right: 3%;
-    transform: rotate(55deg);
-  }
-  .pillar-word:nth-child(4) {
-    bottom: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .pillar-word:nth-child(5) {
-    bottom: 25%;
-    left: 3%;
-    transform: rotate(-50deg);
-  }
-  .pillar-word:nth-child(6) {
-    top: 25%;
-    left: 3%;
-    transform: rotate(-25deg);
+  .word-flash {
+    color: var(--peach-light);
+    display: inline-block;
+    transition: opacity 0.4s ease;
   }
 
   .ethos-content {
@@ -193,27 +132,6 @@
     color: var(--text);
   }
 
-  .pillars-inline {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin: 1.5rem 0 2rem;
-  }
-
-  .pill {
-    background: var(--sage-pale);
-    color: var(--sage-deep);
-    padding: 0.45rem 1rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 500;
-  }
-
-  .pill.alt {
-    background: var(--terra-pale);
-    color: var(--terra-deep);
-  }
-
   .credentials-row {
     display: flex;
     gap: 1.5rem;
@@ -245,3 +163,29 @@
     }
   }
 </style>
+
+<script>
+  const words = [
+    'Nutrition',
+    'Sunlight',
+    'Movement',
+    'Rest',
+    'Play',
+    'Hydration',
+    'Connection',
+    'Sleep',
+  ];
+
+  const el = document.querySelector('.word-flash') as HTMLElement | null;
+  if (el) {
+    let i = 1;
+    setInterval(() => {
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.textContent = words[i];
+        el.style.opacity = '1';
+        i = (i + 1) % words.length;
+      }, 400);
+    }, 2200);
+  }
+</script>

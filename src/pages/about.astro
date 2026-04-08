@@ -24,7 +24,16 @@ const description =
     <div class="about-grid">
       <div class="about-image reveal">
         <div class="about-photo">
-          <span class="placeholder-label">Dr Challis's photo here</span>
+          <img src="/images/IMG_3589.jpeg" alt="Dr Challis Paterson" />
+        </div>
+        <div class="credentials-box">
+          <h3>Qualifications</h3>
+          <ul>
+            <li>Fellow, Royal Australian College of General Practitioners (FRACGP, 2025)</li>
+            <li>Doctor of Medicine (MD), University of Queensland, 2018</li>
+            <li>Bachelor of Exercise and Nutrition Sciences, University of Queensland</li>
+            <li>Clinical experience: Mater Hospital, Queensland Children's Hospital</li>
+          </ul>
         </div>
       </div>
       <div class="about-text reveal">
@@ -72,15 +81,6 @@ const description =
           the mornings, reconnecting with the natural rhythms I ask my patients to honour.
         </p>
 
-        <div class="credentials-box">
-          <h3>Qualifications</h3>
-          <ul>
-            <li>Fellow, Royal Australian College of General Practitioners (FRACGP, 2025)</li>
-            <li>Doctor of Medicine (MD), University of Queensland, 2018</li>
-            <li>Bachelor of Exercise and Nutrition Sciences, University of Queensland</li>
-            <li>Clinical experience: Mater Hospital, Queensland Children's Hospital</li>
-          </ul>
-        </div>
       </div>
     </div>
   </section>
@@ -145,17 +145,19 @@ const description =
     width: 100%;
     aspect-ratio: 3/4;
     border-radius: 200px 200px 24px 24px;
-    background: linear-gradient(170deg, var(--peach) 0%, var(--terra-light) 50%, var(--sage-light) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
   }
 
-  .placeholder-label {
-    font-family: var(--font-display);
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.95rem;
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .credentials-box {
+    margin-top: 1.5rem;
   }
 
   .about-text h2 {

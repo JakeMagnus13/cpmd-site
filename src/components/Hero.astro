@@ -18,14 +18,7 @@
   <div class="hero-image">
     <div class="hero-photo-frame">
       <div class="hero-photo">
-        <div class="photo-placeholder-icon">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-            ></path>
-          </svg>
-        </div>
-        <span class="photo-placeholder-label">Dr Challis's photo here</span>
+        <img src="/images/Headshot1.jpeg" alt="Dr Challis Paterson" />
       </div>
       <div class="hero-badge">
         <div class="badge-dot">🎓</div>
@@ -189,44 +182,16 @@
     width: 100%;
     aspect-ratio: 3/4;
     border-radius: 200px 200px 24px 24px;
-    background: linear-gradient(
-      170deg,
-      var(--peach) 0%,
-      var(--terra-light) 50%,
-      var(--sage-light) 100%
-    );
     position: relative;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0.5rem;
   }
 
-  .photo-placeholder-label {
-    font-family: var(--font-display);
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.95rem;
-    z-index: 1;
-  }
-
-  .photo-placeholder-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-  }
-
-  .photo-placeholder-icon svg {
-    width: 28px;
-    height: 28px;
-    fill: rgba(255, 255, 255, 0.7);
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
   }
 
   .hero-badge {
